@@ -19,17 +19,6 @@ dataset['order_month'] = dataset['order_date'].apply(lambda x: datetime.datetime
 # Buat Kolom GMV
 dataset['gmv'] = dataset['item_price']*dataset['quantity']
 
-# Buat variabel untuk 5 propinsi dengan GMV tertinggi
-top_provinces = (dataset.groupby('province')['gmv']
-                        .sum()
-                        .reset_index()
-                        .sort_values(by='gmv',ascending=False)
-                        .head(5))
-print(top_provinces)
-
-# Buat satu kolom lagi di dataset dengan nama province_top
-dataset['province_top'] = dataset['province'].apply(lambda x: x if (x in top_provinces['province'].to_list()) else 'other')
-
 # Buat Dataset baru untuk DKI Quarter 4
 dataset_dki_q4 = dataset[(dataset['province']=='DKI Jakarta') & (dataset['order_month'] >= '2019-10')]
 print(dataset_dki_q4.head())
