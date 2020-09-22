@@ -67,6 +67,7 @@ plt.grid(color='darkgray', linestyle=':', linewidth=0.5)
 plt.ylim(ymin=0)
 labels, locations = plt.yticks()
 plt.yticks(labels, (labels/1000000000).astype(float))
+plt.xticks(rotation=45)
 plt.legend(loc='upper center', bbox_to_anchor=(1.1, 1), shadow=True, ncol=1)
 ## Anotasi pertama
 plt.annotate('GMV other meningkat pesat', xy=(5, 900000000), 
