@@ -52,12 +52,3 @@ plt.title('Distribution of Customers', fontsize = 20)
 plt.xlabel('Region Codes', fontsize = 14)
 plt.ylabel('Count Users', fontsize = 14)
 plt.show()
-
-# Checking for missing values per feature
-print('\nMissing Values per Feature')
-print(dataset.isnull().sum())
-
-# Total missing values
-print('\nTotal Missing Values')
-print(dataset.isnull().sum().sum())
-
