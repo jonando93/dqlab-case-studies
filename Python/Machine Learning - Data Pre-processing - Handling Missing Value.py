@@ -23,7 +23,7 @@ print(dataset.isnull().sum().sum())
 dataset_clean = dataset.dropna()  
 print('\nUkuran dataset_clean:', dataset_clean.shape) 
 
-# Method [2] Impute missing value
+# Method [2] Impute missing value using mean()
 print("Before imputation:")
 ## Checking missing value for each feature  
 print(dataset.isnull().sum())
@@ -33,6 +33,21 @@ print(dataset.isnull().sum().sum())
 print("\nAfter imputation:")
 ## Fill missing value with mean of feature value  
 dataset.fillna(dataset.mean(), inplace = True)
+## Checking missing value for each feature  
+print(dataset.isnull().sum())
+## Counting total missing value  
+print(dataset.isnull().sum().sum())
+
+# Method [3] Impute missing value using median()
+print("Before imputation:")
+## Checking missing value for each feature  
+print(dataset.isnull().sum())
+## Counting total missing value  
+print(dataset.isnull().sum().sum())
+
+print("\nAfter imputation:")
+## Fill missing value with mean of feature value  
+dataset.fillna(dataset.median(), inplace = True)
 ## Checking missing value for each feature  
 print(dataset.isnull().sum())
 ## Counting total missing value  
