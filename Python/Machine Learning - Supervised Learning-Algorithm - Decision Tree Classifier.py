@@ -130,7 +130,7 @@ print('Shape of X:', X.shape)
 print('Shape of y:', y.shape)
 
 # [5] TRAINING & TEST DATASET
-## Splitting the X, and y
+## Splitting the X, and y (X = FEATURE, y = LABEL or TARGET)
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 
 ## Checking the shapes
@@ -140,7 +140,7 @@ print("Shape of X_test :", X_test.shape)
 print("Shape of y_test :", y_test.shape)
 print('')
 
-# [6.1] TRAINING MODEL: FIT
+# [6.1] TRAINING MODEL: FIT - DECISION TREE CLASSIFIER
 ## Call the classifier
 model = DecisionTreeClassifier()
 ## Fit the classifier to the training data
@@ -151,17 +151,17 @@ model = model.fit(X_train,y_train)
 y_pred = model.predict(X_test)
 print(y_pred.shape)
 
-# [7] EVALUATING MODEL PERFORMANCE
-# evaluating the model
+# [7] EVALUATING MODEL PERFORMANCE - DECISION TREE CLASSIFIER
+## Evaluating the model
 print('\nTraining Accuracy :', model.score(X_train, y_train))
 print('Testing Accuracy :', model.score(X_test, y_test))
 
-# confusion matrix
+## Confusion matrix
 print('\nConfusion matrix:')
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
 
-# classification report
+## Classification report
 print('\nClassification report:')
 cr = classification_report(y_test, y_pred)
 print(cr)
