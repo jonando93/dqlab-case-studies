@@ -79,3 +79,11 @@ print(cm)
 print('\nClassification report:')
 cr = classification_report(Y_data_test, y_pred)
 print(cr)
+
+#Implementing Machine Learning Model to dataframe
+y_pred1 = model.predict(datafeed)
+
+#Adding new column to record Model Prediction
+df['risk_rating_prediction'] = y_pred1
+print(df['risk_rating_prediction'].shape)
+
