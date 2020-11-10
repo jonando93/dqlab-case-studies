@@ -20,6 +20,7 @@ print('\nNama Kolom:\n',raw_data.columns)
 #Checking for missing value
 print('\nJumlah Missing Value:\n',raw_data.isna().sum())
 
+# [1] UKURAN PUSAT
 #Describe Method
 print('\nMetode Describe():\n',raw_data.describe())
 print('\nMelihat nilai min dari kolom "Harga":',raw_data['Harga'].min())
@@ -58,6 +59,39 @@ print('\nModus dari masing-masing produk:\n',raw_data['Produk'].value_counts())
 print('\nMedian dari kolom "Pendapatan":\n',raw_data['Pendapatan'].quantile(q = 0.5))
 
 #Menggabungkan (Agregasi) Data dengan metode .agg()
+print('')
 print(raw_data[['Pendapatan','Harga']].agg([np.mean, np.median]))
-print(raw_data[['Pendapatan','Harga','Produk']].groupby('Produk').agg([np.mean, np.median]))
+print('\n',raw_data[['Pendapatan','Harga','Produk']].groupby('Produk').agg([np.mean, np.median]))
 
+# [2] UKURAN SEBARAN
+#Mencari proporsi tiap Produk
+print('')
+print(raw_data['Produk'].value_counts()/raw_data.shape[0])
+
+#Mencari nilai rentang dari kolom 'Pendapatan'
+print (raw_data['Pendapatan'].max() - raw_data['Pendapatan'].min())
+
+#Menghitung variansi umur menggunakan method .var() dari pandas
+print (raw_data['Pendapatan'].var()) #Secara default, .var di pandas menggunakan varians sample.
+ 
+#Menghitung variansi umur menggunakan method .var() dari numpy
+print (np.var(raw_data['Pendapatan']))
+
+#Mengatur variansi populasi dengan method `.var()` dari pandas
+print (raw_data['Pendapatan'].var(ddof=0)) #Dengan menambahkan parameter ddof, maka .var menggunakan varians populasi.
+
+#Menghitung deviasi baku sampel pendapatan menggunakan method std() dari pandas
+print (raw_data['Pendapatan'].std())
+ 
+#Menghitung deviasi baku sampel pendapatan menggunakan method std() dari numpy
+print (np.std(raw_data['Pendapatan'], ddof = 1))
+
+# [3] KORELASI
+#Menghitung korelasi dari setiap pasang variabel pada raw_data
+print (raw_data.corr())
+
+#Mencari korelasi 'kendall' untuk tiap pasang variabel
+print (raw_data.corr(method='kendall'))
+ 
+#Mencari korelasi 'spearman' untuk tiap pasang variabel
+print (raw_data.corr(method='spearman'))
